@@ -37,6 +37,10 @@ public class G {
             if(pilih==2){
                 break;
             }
+            else if(pilih>2){
+                System.out.println("[ERROR SYSTEM] Masukkan input yang benar");
+                continue;
+            }
             try {
                 System.out.print("Kode Tiket: ");
                 String kode=input.nextLine();
@@ -94,16 +98,21 @@ public class G {
         System.out.println("====================================");
         System.out.println("        REKAPITULASI TIKET");
         System.out.println("====================================");
-        for(int i=0;i<jumlah;i++){
-            System.out.println("Kode Booking : "+daftarTiket[i].getKodeTiket());
-            System.out.println("Jadwal       :"+daftarTiket[i].getDetailJadwal());
-            System.out.println("Total Harga  :"+daftarTiket[i].hitungHarga());
-            
-            if(daftarTiket[i] instanceof LayananEksklusif){
-                LayananEksklusif layanan=(LayananEksklusif) daftarTiket[i];
-                System.out.println("Fasilitas    : "+layanan.getFasilitasTambahan());
-            }
-            System.out.println("-----------------------------------");
+        if(jumlah>0){
+            for(int i=0;i<jumlah;i++){
+              System.out.println("Kode Booking : "+daftarTiket[i].getKodeTiket());
+              System.out.println("Jadwal       :"+daftarTiket[i].getDetailJadwal());
+              System.out.println("Total Harga  :"+daftarTiket[i].hitungHarga());
+
+              if(daftarTiket[i] instanceof LayananEksklusif){
+                  LayananEksklusif layanan=(LayananEksklusif) daftarTiket[i];
+                  System.out.println("Fasilitas    : "+layanan.getFasilitasTambahan());
+              }
+              System.out.println("-----------------------------------");
+            }  
+        }
+        else{
+            System.out.println("Tidak ada tiket yang diterbitkan");
         }
         System.out.println("Sesi loket diakhiri");
     }
